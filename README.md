@@ -88,6 +88,8 @@ Or with yarn:
 yarn preview
 ```
 
+## Project Structure
+
 ```text
 /
 ├── public/                 # Static assets
