@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 
 const { slug } = Astro.params;
 if (!slug) throw new Error('Slug not found');
@@ -17,6 +18,11 @@ export async function getStaticPaths() {
 ---
 
 <Layout title={post.data.title}>
-  <h1>{post.data.title}</h1>
-  <Content />
+  <div class="container max-w-screen-xl mx-auto p-6">
+    <article class="prose max-w-none">
+      <Image src={post.data.featuredImage} alt={post.data.imgAlt} />
+      <h1>{post.data.title}</h1>
+    <Content />
+    </article>
+  </div>
 </Layout>
