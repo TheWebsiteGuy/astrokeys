@@ -1,0 +1,19 @@
+links:
+  - text: Item 1
+    isDropdown:
+      discriminant: false
+      value:
+        link: '#'
+  - text: Item 2
+    isDropdown:
+      discriminant: true
+      value:
+        - text: Sub item 1
+          link: '#'
+        - text: Sub item 2
+          link: '#'
+buttons:
+  - label: Test
+    link: '#'
+    style: neutral
+    size: ''

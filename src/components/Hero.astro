@@ -1,0 +1,52 @@
+---
+import { getEntry } from 'astro:content'
+import type { ImageMetadata } from 'astro';
+import { Image } from "astro:assets";
+
+
+import Button from './ui/Button.tsx';
+import HeroImage from '@components/HeroImage.astro';
+const pageData = await getEntry('pages', 'home');
+const buttons = pageData?.data.hero?.buttons || [];
+const heroImage = pageData?.data.hero?.heroImage;
+
+// Extract the heroImage filename from the path
+const heroImagePath = heroImage?.src || '';
+
+
+---
+
+<div class="hero bg-base-200">
+  <div class="hero-content md:py-20">
+    <div class="flex flex-col-reverse md:flex-row">
+      <div class="flex flex-col items-start gap-6">
+        <h1 class="text-6xl max-w-3xl font-anton">{pageData.data.hero.heading}</h1>
+        <h2 class="text-4xl font-semibold">{pageData.data.hero.subheading}</h2>
+        <p class="py-3">
+            {pageData.data.hero.intro}
+        </p>
+      <div class="flex flex-col items-center justify-center gap-4 lg:flex-row">
+        {
+          buttons.map((button) => (
+            <Button
+              client:load
+              link={button.link}
+              label={button.label}
+              style={button.style}
+              size={button.size}
+              icon={button.icon}
+            />
+          ))
+        }
+      </div>
+    </div>
+      
+      <div class="w-1/2">
+        <HeroImage 
+        imagePath={heroImagePath} 
+        altText={pageData?.data.hero?.heroImageAlt || "Hero Image"} 
+      />
+      </div>
+    </div>
+  </div>
+</div>
