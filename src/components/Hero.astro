@@ -1,9 +1,5 @@
 ---
 import { getEntry } from 'astro:content'
-import type { ImageMetadata } from 'astro';
-import { Image } from "astro:assets";
-
-
 import Button from './ui/Button.tsx';
 import HeroImage from '@components/HeroImage.astro';
 const pageData = await getEntry('pages', 'home');

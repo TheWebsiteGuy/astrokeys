@@ -88,6 +88,7 @@ Or with yarn:
 yarn preview
 ```
 
+```text
 /
 ├── public/                 # Static assets
 ├── src/
@@ -103,4 +104,5 @@ yarn preview
 ├── astro.config.mjs        # Astro configuration
 ├── package.json            # Project dependencies and scripts
 └── README.md               # Project documentation
+```
 
