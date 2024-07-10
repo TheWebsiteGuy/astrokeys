@@ -23,6 +23,7 @@ export const posts = collection({
           },
         },
       }),
+      excerpt: fields.text({ label: 'Excerpt', multiline: true, description: 'A brief description of this article' }),
       publishedDate: fields.date({ label: "Published date" }),
     
     // tags: fields.array(
