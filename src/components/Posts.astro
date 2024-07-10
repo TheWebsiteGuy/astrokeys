@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, getEntry } from 'astro:content';
+const posts = await getCollection('posts');
+
+const pageData = await getEntry('pages', 'home');
+const data = pageData?.data.posts
+---
+<section class="bg-base-100 py-10">
+    <div class="container mx-auto my-10 px-3 max-w-screen-2xl">
+        <header class="text-center pb-20">
+            <h2 class="text-5xl font-bold">{data.heading}</h2>
+            <p>{data.subheading}</p>
+        </header>
+        <ul class="flex items-stretch justify-center flex-wrap gap-6"> 
+          {posts.map(post => (
+            <li><a href={`/posts/${post.slug}`}>
+              <div class="card bg-base-300 w-96 shadow-xl h-full hover:scale-105 transition-transform">
+              <figure>
+                <Image src={post.data.featuredImage}
+                  class="h-60 object-fit rounded-t-2xl"
+                  alt="Shoes" />
+              </figure>
+              <div class="card-body">
+                <h2 class="card-title">{post.data.title}</h2>
+                <p>{post.data.excerpt}</p>
+                <div class="card-actions justify-end">
+                  <button class="btn btn-primary btn-link">Read full story</button>
+                </div>
+              </div>
+            </div>
+  
+              </a>
+            </li>
+          ))}
+        </ul>
+    </div>
+</section>
