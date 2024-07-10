@@ -23,3 +23,6 @@ hero:
     - label: Test Button 2
       style: link
       size: small
+posts:
+  heading: Latest Posts
+  subheading: All the latest news and stories.
