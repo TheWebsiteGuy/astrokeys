@@ -5,86 +5,88 @@ const pageData = await getEntry('pages', 'navbar')
 const buttons = pageData?.data.buttons || []
 const links = pageData?.data.links || []
 ---
-<div class="navbar bg-base-100/50 sticky top-0 z-50 backdrop-blur-xl">
-    <div class="navbar-start">
-      <div class="dropdown">
-        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h8m-8 6h16" />
-          </svg>
+<div class="bg-base-100/50 sticky top-0 z-50 backdrop-blur-xl">
+    <div class="navbar max-w-screen-2xl mx-auto">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-60 p-2 shadow">
+            {links.map((link) => (
+              <li>
+                {link.isDropdown.discriminant ? (
+                  <>
+                    <a>{link.text}</a>
+                    <ul class="p-2">
+                      {link.isDropdown.value.map((sublink) => (
+                          
+                        <li>
+                          <a href={sublink.link}>{sublink.text}</a>
+                        </li>
+                      ))}
+                    </ul>
+                    </details>
+                  </>
+                ) : (
+                  <a href={link.isDropdown.value.link}>{link.text}</a>
+                )}
+              </li>
+            ))}
+            
         </div>
-        <ul
-          tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-60 p-2 shadow">
-          {links.map((link) => (
-            <li>
-              {link.isDropdown.discriminant ? (
-                <>
-                  <a>{link.text}</a>
-                  <ul class="p-2">
-                    {link.isDropdown.value.map((sublink) => (
-                        
-                      <li>
-                        <a href={sublink.link}>{sublink.text}</a>
-                      </li>
-                    ))}
-                  </ul>
-                  </details>
-                </>
-              ) : (
-                <a href={link.isDropdown.value.link}>{link.text}</a>
-              )}
-            </li>
-          ))}
-          
+        <a class="btn btn-ghost text-xl">daisyUI</a>
       </div>
-      <a class="btn btn-ghost text-xl">daisyUI</a>
-    </div>
-    <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1 ">
-        {links.map((link) => (
-            <li>
-              {link.isDropdown.discriminant ? (
-                <>
-                  <details>
-                    <summary>{link.text}</summary>
-                  <ul class="p-2">
-                    {link.isDropdown.value.map((sublink) => (
-                        
-                      <li>
-                        <a href={sublink.link}>{sublink.text}</a>
-                      </li>
-                    ))}
-                  </ul>
-                  </details>
-                </>
-              ) : (
-                <a href={link.isDropdown.value.link}>{link.text}</a>
-              )}
-            </li>
-          ))}
-    </div>
-    <div class="navbar-end">
-        {
-            buttons.map((button) => (
-              <Button
-                client:load
-                link={button.link}
-                label={button.label}
-                style={button.style}
-                size={button.size}
-                icon={button.icon}
-              />
-            ))
-          }
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 ">
+          {links.map((link) => (
+              <li>
+                {link.isDropdown.discriminant ? (
+                  <>
+                    <details>
+                      <summary>{link.text}</summary>
+                    <ul class="p-2">
+                      {link.isDropdown.value.map((sublink) => (
+                          
+                        <li>
+                          <a href={sublink.link}>{sublink.text}</a>
+                        </li>
+                      ))}
+                    </ul>
+                    </details>
+                  </>
+                ) : (
+                  <a href={link.isDropdown.value.link}>{link.text}</a>
+                )}
+              </li>
+            ))}
+      </div>
+      <div class="navbar-end">
+          {
+              buttons.map((button) => (
+                <Button
+                  client:load
+                  link={button.link}
+                  label={button.label}
+                  style={button.style}
+                  size={button.size}
+                  icon={button.icon}
+                />
+              ))
+            }
+      </div>
     </div>
   </div>
