@@ -23,7 +23,13 @@ export const home = singleton({
         label: 'Hero Section',
         description: 'The intro section of home page',
       }),
-
     // End Hero
+    posts: fields.object({
+      heading: fields.text({ label: 'Posts Heading' }),
+      subheading: fields.text({ label: 'Subheading', multiline: true }),
+    },
+    {
+      label: 'Posts section',
+    }),
     }
   });
