@@ -1,9 +1,13 @@
 ---
 import { getEntry } from 'astro:content'
 import Button from './ui/Button.tsx'
-const pageData = await getEntry('pages', 'navbar')
+const pageData = await getEntry('pages', 'navbar', )
+const siteSettings = await getEntry('pages', 'settings')
+
 const buttons = pageData?.data.buttons || []
 const links = pageData?.data.links || []
+
+const siteSetting = siteSettings.data.site
 ---
 <div class="bg-base-100/50 sticky top-0 z-50 backdrop-blur-xl">
     <div class="navbar max-w-screen-2xl mx-auto">
@@ -48,7 +52,7 @@ const links = pageData?.data.links || []
             ))}
             
         </div>
-        <a class="btn btn-ghost text-xl">daisyUI</a>
+        <a class="btn btn-ghost text-xl">{siteSetting.siteName}</a>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1 ">
