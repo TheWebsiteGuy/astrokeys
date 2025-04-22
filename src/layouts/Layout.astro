@@ -8,6 +8,7 @@ export interface Props {
 }
 
 import branding from '@settings/branding.json'
+import seo from '@settings/seo.json'
 
 const { title } = Astro.props
 ---
@@ -21,6 +22,20 @@ const { title } = Astro.props
   {branding.site.favicon && (
   <link rel="icon" href={branding.site.favicon} />
       )}
+
+  <!-- SEO -->
+  <meta name="title" content={seo?.title} />
+  <meta name="description" content={seo?.description} />
+  <meta name="keywords" content={seo?.keywords} />
+  <meta name="og:title" content={seo?.ogTitle} />
+  <meta name="og:description" content={seo?.ogDescription} />
+  <meta name="og:image" content={seo?.ogImage} />
+  <meta name="twitter:title" content={seo?.twitterTitle} />
+  <meta name="twitter:description" content={seo?.twitterDescription} />
+  <meta name="twitter:image" content={seo?.twitterImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+
   <meta name="generator" content={Astro.generator} />
   <ClientRouter />
   <title>{title}</title>

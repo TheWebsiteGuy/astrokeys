@@ -47,4 +47,19 @@ const branding = defineCollection({
   }),
 })
 
-export const collections = { posts, branding, pages }
+const seo = defineCollection({
+  loader: file('./src/settings/seo.json'),
+  schema: z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+    keywords: z.string().optional(),
+    ogTitle: z.string().optional(),
+    ogDescription: z.string().optional(),
+    ogImage: z.string().optional(),
+    twitterTitle: z.string().optional(),
+    twitterDescription: z.string().optional(),
+    twitterImage: z.string().optional(),
+  }),
+})
+
+export const collections = { posts, branding, pages, seo }
