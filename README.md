@@ -1,6 +1,6 @@
 # Astro Starter Template with Keystatic CMS, Tailwind CSS, and DaisyUI
 
-Welcome to your new project! This starter template is built using Astro, Keystatic CMS, Tailwind CSS, and DaisyUI, offering a powerful yet simple foundation for creating fast and beautiful static sites.
+This starter template is built using Astro, Keystatic CMS, Tailwind CSS, and DaisyUI, offering a powerful yet simple foundation for creating fast and beautiful static sites.
 
 ## Table of Contents
 
@@ -8,8 +8,6 @@ Welcome to your new project! This starter template is built using Astro, Keystat
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
