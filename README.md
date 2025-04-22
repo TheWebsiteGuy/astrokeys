@@ -27,6 +27,11 @@ Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/en/) (v14.x or later)
 - [npm](https://www.npmjs.com/) (v6.x or later) or [yarn](https://yarnpkg.com/) (v1.x or later)
 
+### Clone repo
+
+```sh
+git clone https://github.com/TheWebsiteGuy/astrokeys
+```
 
 ### Install Dependencies
 
