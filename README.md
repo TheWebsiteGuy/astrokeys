@@ -13,10 +13,10 @@ Welcome to your new project! This starter template is built using Astro, Keystat
 
 ## Features
 
-- **Astro**: Build fast, modern websites with Astro's powerful static site generator.
-- **Keystatic CMS**: Manage your site's content with an easy-to-use CMS.
-- **Tailwind CSS**: Rapidly build and style your site with Tailwind CSS.
-- **DaisyUI**: Use beautiful, pre-designed components with DaisyUI.
+- **[Astro](https://astro.build/)**: Build fast, modern websites with Astro's powerful static site generator. 
+- **[Keystatic CMS](https://keystatic.com/)**: Manage your site's content with an easy-to-use CMS.
+- **[Tailwind CSS](https://tailwindcss.com/)**: Rapidly build and style your site with Tailwind CSS.
+- **[DaisyUI](https://daisyui.com/)**: Use beautiful, pre-designed components with DaisyUI.
 
 ## Installation
 
@@ -100,9 +100,10 @@ yarn preview
 │   ├── content/            # Astro content managed by Keystatic
 │   ├── layouts/            # Astro layouts
 │   ├── pages/              # Astro pages
+│   ├── settings/           # Site settings
+│   ├── styles/             # CSS config with TailwindCSS and DaisyUI
 ├── keystatic.config.ts     # Keystatic CMS configuration
 ├── keystatic.page.ts       # Keystatic CMS configuration for Singleton pages
-├── tailwind.config.js      # Tailwind CSS configuration
 ├── astro.config.mjs        # Astro configuration
 ├── package.json            # Project dependencies and scripts
 └── README.md               # Project documentation
