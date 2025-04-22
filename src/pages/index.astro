@@ -1,15 +1,22 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
-import Layout from '../layouts/Layout.astro'; 
-import Hero from 'src/components/Hero.astro';
-import { Image } from 'astro:assets';
-import Posts from '@components/Posts.astro';
+import Layout from '@layouts/Layout.astro'
+import Posts from '@components/Posts.astro'
+import Hero from '@components/Hero.astro'
 
-const posts = await getCollection('posts');
+import pageData from '@content/pages/home.json'
 ---
 
-<Layout title="Keystatic & Astro's Content Collections">
+<Layout title={pageData?.title}>
   <Hero />
-  <Posts />
+  <section class="bg-base-100 py-10">
+    <div class="container mx-auto my-10 max-w-screen-2xl px-3">
+      <header class="space-y-3 text-center">
+        <h2 class="text-5xl font-bold">{pageData?.posts.heading}</h2>
+        <p>{pageData?.posts.subheading}</p>
+      </header>
+      <div class="mt-10">
+        <Posts maxPosts={3} />
+      </div>
+    </div>
+  </section>
 </Layout>
-

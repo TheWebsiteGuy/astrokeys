@@ -1,27 +1,32 @@
 ---
-import "../assets/styles/fonts.css"
-import Navbar from 'src/components/Navbar.astro';
-
+import '@styles/global.css'
+import Navbar from 'src/components/Navbar.astro'
+import { ClientRouter } from 'astro:transitions'
 
 export interface Props {
-	title: string;
+  title: string
 }
 
-const { title } = Astro.props;
+import branding from '@settings/branding.json'
+
+const { title } = Astro.props
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="font-roboto scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Navbar />
-		<slot />
-	</body>
+<!doctype html>
+<html lang="en" class="font-roboto scroll-smooth" data-theme={branding.site.theme}>
+  <head>
+    <meta charset=" UTF-8">
+  <meta name="description" content="Astro description" />
+  <meta name="viewport" content="width=device-width" />
+  {branding.site.favicon && (
+  <link rel="icon" href={branding.site.favicon} />
+      )}
+  <meta name="generator" content={Astro.generator} />
+  <ClientRouter />
+  <title>{title}</title>
+
+  <body>
+    <Navbar />
+    <slot />
+  </body>
 </html>

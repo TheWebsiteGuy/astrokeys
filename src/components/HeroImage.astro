@@ -1,16 +1,17 @@
 ---
-import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
 
 interface Props {
-  imagePath: string; 
-  altText: string;
+  imagePath: string
+  altText: string
 }
 
-const { imagePath, altText } = Astro.props;
-const images = import.meta.glob<ImageMetadata>('/src/assets/images/pages/home/hero/*.{jpeg,jpg,png,gif,webp,svg}');
-const imageModule = Object.keys(images).find(path => path.endsWith(imagePath));
-if (!imageModule) throw new Error(`Image not found: ${imagePath}`);
+const { imagePath, altText } = Astro.props
+const images = import.meta.glob<ImageMetadata>('/src/assets/images/pages/home/hero/*.{jpeg,jpg,png,gif,webp,svg}')
+const imageModule = Object.keys(images).find((path) => path.endsWith(imagePath))
+if (!imageModule) throw new Error(`Image not found: ${imagePath}`)
 ---
 
-<Image src={images[imageModule]()} alt={altText} class="rounded-box" /> 
+<Image src={images[imageModule]()} alt={altText} class="rounded-box" />
+

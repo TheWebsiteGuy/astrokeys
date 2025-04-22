@@ -1,0 +1,28 @@
+{
+  "title": "Home",
+  "hero": {
+    "heroImage": "src/assets/images/pages/home/hero/heroImage.jpg",
+    "heroImageAlt": "Superman being bulletproof",
+    "heading": "Astro + Keystatic CMS Starter Template",
+    "subheading": "With Tailwind & DaisyUI",
+    "intro": "This is a starter template to get started quickly with Astro, Keystatic CMS, and Tailwind with DaisyUI.",
+    "buttons": [
+      {
+        "label": "Test Button 1",
+        "link": "#",
+        "style": "primary",
+        "size": "large"
+      },
+      {
+        "label": "Test Button 2",
+        "link": "#",
+        "style": "outline",
+        "size": ""
+      }
+    ]
+  },
+  "posts": {
+    "heading": "Latest Posts",
+    "subheading": "All the latest news and stories."
+  }
+}

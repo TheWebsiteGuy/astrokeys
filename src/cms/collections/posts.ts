@@ -26,18 +26,6 @@ export const posts = collection({
       excerpt: fields.text({ label: 'Excerpt', multiline: true, description: 'A brief description of this article' }),
       publishedDate: fields.date({ label: "Published date" }),
     
-    // tags: fields.array(
-    //   fields.object({
-    //     name: fields.text({ label: "Tags" }),
-    //     bio: fields.markdoc({
-    //       label: "Tags",
-    //     }),
-    //   }),
-    //   {
-    //     label: "Tags",
-    //     slugField: "name",
-    //     itemLabel: (props) => props.fields.name.value,
-    //   }
-    // ),
+  
     },
   });

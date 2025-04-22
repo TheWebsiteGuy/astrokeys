@@ -1,13 +1,11 @@
 ---
-import { getEntry } from 'astro:content'
-import Button from './ui/Button.tsx'
-const pageData = await getEntry('pages', 'navbar', )
-const siteSettings = await getEntry('pages', 'settings')
+import Button from '@components/ui/Button.tsx'
+import navbarSettings from '@settings/navbar.json';
+import branding from '@settings/branding.json';
 
-const buttons = pageData?.data.buttons || []
-const links = pageData?.data.links || []
+const buttons = navbarSettings?.buttons || []
+const links = navbarSettings?.links || []
 
-const siteSetting = siteSettings.data.site
 ---
 <div class="bg-base-100/50 sticky top-0 z-50 backdrop-blur-xl">
     <div class="navbar max-w-screen-2xl mx-auto">
@@ -52,7 +50,7 @@ const siteSetting = siteSettings.data.site
             ))}
             
         </div>
-        <a class="btn btn-ghost text-xl">{siteSetting.siteName}</a>
+        <a href="/" aria-label={branding.site.siteName} class="btn btn-ghost text-xl">{branding.site.siteName}</a>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1 ">
