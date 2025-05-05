@@ -1,7 +1,7 @@
 {
   "title": "Home",
   "hero": {
-    "heroImage": "src/assets/images/pages/home/hero/heroImage.jpg",
+    "heroImage": "/src/assets/images/pages/home/hero/heroImage.jpg",
     "heroImageAlt": "Superman being bulletproof",
     "heading": "Astro + Keystatic CMS Starter Template",
     "subheading": "With Tailwind & DaisyUI",

@@ -24,21 +24,31 @@ const { title } = Astro.props
       )}
 
   <!-- SEO -->
-  <meta name="title" content={seo?.title} />
-  <meta name="description" content={seo?.description} />
-  <meta name="keywords" content={seo?.keywords} />
-  <meta name="og:title" content={seo?.ogTitle} />
-  <meta name="og:description" content={seo?.ogDescription} />
-  <meta name="og:image" content={seo?.ogImage} />
-  <meta name="twitter:title" content={seo?.twitterTitle} />
-  <meta name="twitter:description" content={seo?.twitterDescription} />
-  <meta name="twitter:image" content={seo?.twitterImage} />
-  <meta name="twitter:card" content="summary_large_image" />
+  <title>{title || seo.title}</title>
+  {seo.description && <meta name="description" content={seo.description} />}
+  {seo.keywords && <meta name="keywords" content={seo.keywords} />}
+  {seo.canonical && <link rel="canonical" href={seo.canonical} />}
   
+  <!-- Open Graph -->
+  <meta property="og:title" content={seo.opengraph?.Title || title || seo.title} />
+  {seo.opengraph?.Description && (
+    <meta property="og:description" content={seo.opengraph.Description} />
+  )}
+  {seo.opengraph?.Image?.src && (
+    <meta property="og:image" content={new URL(seo.opengraph.Image.src, Astro.url.origin)} />
+  )}
 
-  <meta name="generator" content={Astro.generator} />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={seo.twitter?.Title || title || seo.title} />
+  {seo.twitter?.Description && (
+    <meta name="twitter:description" content={seo.twitter.Description} />
+  )}
+  {seo.twitter?.Image?.src && (
+    <meta name="twitter:image" content={new URL(seo.twitter.Image.src, Astro.url.origin)} />
+  )}
+ 
   <ClientRouter />
-  <title>{title}</title>
 
   <body>
     <Navbar />

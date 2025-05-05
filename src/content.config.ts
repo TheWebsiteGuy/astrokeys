@@ -49,17 +49,22 @@ const branding = defineCollection({
 
 const seo = defineCollection({
   loader: file('./src/settings/seo.json'),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string().optional(),
     description: z.string().optional(),
     keywords: z.string().optional(),
-    ogTitle: z.string().optional(),
-    ogDescription: z.string().optional(),
-    ogImage: z.string().optional(),
-    twitterTitle: z.string().optional(),
-    twitterDescription: z.string().optional(),
-    twitterImage: z.string().optional(),
-  }),
+    canonical: z.string().optional(),
+    opengraph: z.object({
+      Title: z.string().optional(),
+      Description: z.string().optional(),
+      Image: image().optional(),
+    }),
+    twitter: z.object({
+      Title: z.string().optional(),
+      Description: z.string().optional(),
+      Image: image().optional(),
+    }),
+  }), 
 })
 
 export const collections = { posts, branding, pages, seo }

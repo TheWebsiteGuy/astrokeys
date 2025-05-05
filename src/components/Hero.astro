@@ -1,13 +1,11 @@
 ---
 import Button from '@components/ui/Button.tsx'
 
-import HeroImage from '@components/HeroImage.astro'
-import pageData  from '@content/pages/home.json'
-const buttons = pageData?.hero?.buttons || []
-const heroImage = pageData?.hero?.heroImage
 
-// Extract the heroImage filename from the path
-const heroImagePath = pageData.hero.heroImage || ''
+import pageData from '@content/pages/home.json'
+import { Image } from 'astro:assets'
+const buttons = pageData?.hero?.buttons || []
+
 ---
 
 <div class="bg-base-200">
@@ -38,11 +36,16 @@ const heroImagePath = pageData.hero.heroImage || ''
 
         <div class="w-1/2">
           {
-            heroImage && (
-             <HeroImage 
-               imagePath={heroImagePath} 
-               altText={pageData?.hero?.heroImageAlt || "Hero Image"} 
-             />
+            Image && (
+              <Image
+                src={pageData.hero.heroImage}
+                alt={pageData?.hero?.heroImageAlt || 'Hero Image'}
+                class="h-full w-full object-cover"
+                loading="lazy"
+                width={500}
+                height={500}
+                placeholder="blurred"
+              />
             )
           }
         </div>

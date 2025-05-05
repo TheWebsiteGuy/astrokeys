@@ -17,8 +17,8 @@ export const home = singleton({
         heroImage: fields.image({
           label: 'Hero Image',
           description: 'Hero image',
-          directory: 'src/assets/images/pages/home',
-          publicPath: 'src/assets/images/pages/home/',
+          directory: '/src/assets/images/pages/home',
+          publicPath: '/src/assets/images/pages/home/',
         }),
         heroImageAlt: fields.text({ label: 'Hero Image Alt text' }),
         heading: fields.text({ label: 'Heading' }),
