@@ -1,13 +1,15 @@
 {
-  "title": "Astrokeys",
-  "description": "Astro + Keystatic CMS Starter Template\nWith Tailwind & DaisyUI",
-  "keywords": "Astro, keystatic, daisyui, tailwind",
+  "seo": {
+    "title": "Astrokeys",
+    "description": "Astro + Keystatic CMS Starter Template",
+    "keywords": "astro, tailwindcss, keystatic"
+  },
   "opengraph": {
     "Title": "Astrokeys",
-    "Description": "Astro + Keystatic CMS Starter Template\nWith Tailwind & DaisyUI"
+    "Description": "Astro + Keystatic CMS Starter Template"
   },
   "twitter": {
     "Title": "Astrokeys",
-    "Description": "Astro + Keystatic CMS Starter Template\nWith Tailwind & DaisyUI"
+    "Description": "Astro + Keystatic CMS Starter Template"
   }
 }

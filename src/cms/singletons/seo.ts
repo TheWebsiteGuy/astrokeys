@@ -5,10 +5,12 @@ export const seo = singleton({
   path: 'src/settings/seo',
   format: { data: 'json' },
   schema: {
-    title: fields.text({ label: 'Title' }),
-    description: fields.text({ label: 'Description', multiline: true }),
-    keywords: fields.text({ label: 'Keywords' }),
-    canonical: fields.text({ label: 'Canonical' }),
+    seo: fields.object({
+      title: fields.text({ label: 'Title' }),
+      description: fields.text({ label: 'Description', multiline: true }),
+      keywords: fields.text({ label: 'Keywords' }),
+      canonical: fields.text({ label: 'Canonical' }),
+    }),
     opengraph: fields.object({
       Title: fields.text({ label: 'OG Title' }),
       Description: fields.text({ label: 'OG Description', multiline: true }),

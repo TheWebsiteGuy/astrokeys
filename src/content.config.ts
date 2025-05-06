@@ -12,54 +12,41 @@ const posts = defineCollection({
     }),
 })
 
-const pages = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.(md|mdx|mdoc|yaml|json)', base: './src/content/pages' }),
-  schema: ({ image }) =>
-    z.object({
-      hero: z.object({
-        heroImage: image().optional(),
-        heroImageAlt: z.string().optional(),
-        heading: z.string(),
-        subheading: z.string(),
-        intro: z.string(),
-        buttons: z.array(
-          z.object({
-            label: z.string(),
-            link: z.string(),
-            icon: z.string().optional(),
-            style: z
-              .enum([
-                'primary',
-                'link',
-                'secondary',
-                'danger',
-                'success',
-                'warning',
-                'info',
-                'outline',
-                'neutral',
-                'ghost',
-                '',
-              ])
-              .optional(),
-            size: z.enum(['small', 'large', 'medium', 'tiny', 'wide', 'default', '']).optional(),
-          }),
-        ),
-      }),
-      posts: z.object({
-        heading: z.string(),
-        subheading: z.string(),
-      }),
-    }),
-})
-
 const branding = defineCollection({
   loader: file('./src/settings/branding.json'),
   schema: z.object({
-    site: z.string().optional(),
+    siteName: z.string(),
+    theme: z.string(),
+    favicon: z.string(),
   }),
 })
 
+const seo = defineCollection({
+  loader: file('./src/settings/seo.json'),
+  schema: ({ image }) =>
+    z.object({
+      seo: z.object({
+        title: z.string().optional(),
+        description: z.string().optional(),
+        keywords: z.string().optional(),
+        canonical: z.string().optional(),
+      }).optional(),
+      opengraph: z
+        .object({
+          Title: z.string().optional(),
+          Description: z.string().optional(),
+          Image: image().optional(),
+        })
+        .optional(),
+      twitter: z
+        .object({
+          Title: z.string().optional(),
+          Description: z.string().optional(),
+          Image: image().optional(),
+        })
+        .optional(),
+    }),
+})
 
 
-export const collections = { posts, branding, pages }
+export const collections = { posts, branding, seo }

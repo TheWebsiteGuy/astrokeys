@@ -9,7 +9,6 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic()],
   output: 'static',
-
   vite: {
     plugins: [tailwindcss()]
   }

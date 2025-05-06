@@ -24,10 +24,10 @@ const { title } = Astro.props
       )}
 
   <!-- SEO -->
-  <title>{title || seo.title}</title>
-  {seo.description && <meta name="description" content={seo.description} />}
-  {seo.keywords && <meta name="keywords" content={seo.keywords} />}
-  {seo.canonical && <link rel="canonical" href={seo.canonical} />}
+  {seo.seo.title && <title>{seo.seo.title} | {title}</title>}
+  {seo.seo.description && <meta name="description" content={seo.seo.description} />}
+  {seo.seo.keywords && <meta name="keywords" content={seo.seo.keywords} />}
+  {seo.seo.canonical && <link rel="canonical" href={seo.seo.canonical} />}
   
   <!-- Open Graph -->
   <meta property="og:title" content={seo.opengraph?.Title || title || seo.title} />
