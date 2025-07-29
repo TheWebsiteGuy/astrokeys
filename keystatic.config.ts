@@ -1,5 +1,5 @@
 import { config } from '@keystatic/core';
-import { home, navbar, branding, seo } from 'src/cms/singletons';
+import { home, navbar, footer, branding, seo } from 'src/cms/singletons';
 import { posts } from 'src/cms/collections';
 
 export default config({
@@ -7,11 +7,11 @@ export default config({
     kind: 'local',
   },
 
-  ui: {
+    ui: {
     brand: { name: 'Astrokeys' },
     navigation: {
       'Content': ['home',  'posts',  ],
-      'Components': [ 'navbar'],
+      'Components': [ 'navbar', 'footer'],
       'Site Settings': [ 'branding', 'seo' ],
     },
   },
@@ -23,6 +23,7 @@ export default config({
   singletons: {
     home,
     navbar,
+    footer,
     branding,
     seo
   },

@@ -17,6 +17,22 @@
           "link": "/posts"
         }
       }
+    },
+    {
+      "text": "Dropdown Menu",
+      "isDropdown": {
+        "discriminant": true,
+        "value": [
+          {
+            "text": "Dropdown Item 1",
+            "link": "#"
+          },
+          {
+            "text": "Dropdown Item 2",
+            "link": "#"
+          }
+        ]
+      }
     }
   ],
   "buttons": [

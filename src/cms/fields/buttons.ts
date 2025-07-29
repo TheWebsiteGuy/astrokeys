@@ -16,16 +16,24 @@ export const buttons = fields.array(
             { label: 'success', value: 'success' },
             { label: 'warning', value: 'warning' },
             { label: 'error', value: 'error' },
+          ],
+          defaultValue: 'primary'
+        }),
+        type: fields.select({
+          label: 'Button Type',
+          description: "Button type",
+          options: [
             { label: 'ghost', value: 'ghost' },
             { label: 'link', value: 'link' },
             { label: 'outline', value: 'outline' },
             { label: 'disabled', value: 'disabled' },
+            { label: 'default', value: '' },
           ],
-          defaultValue: 'primary'
+          defaultValue: ''
         }),
         size: fields.select({
             label: 'Size',
-            description: "Style based on DaisyUI.com",
+            description: "Button size",
             options: [
               { label: 'default', value: '' },
               { label: 'large', value: 'large' },
