@@ -18,8 +18,8 @@
         "label": "Test Button 2",
         "link": "#",
         "style": "secondary",
-        "type": "ghost",
-        "size": "small"
+        "type": "",
+        "size": ""
       }
     ]
   },

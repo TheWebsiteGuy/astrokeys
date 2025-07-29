@@ -78,16 +78,31 @@ const links = navbarSettings?.links || []
       </div>
       <div class="navbar-end">
           {
-              buttons.map((button) => (
-                <Button
-                  client:load
-                  link={button.link}
-                  label={button.label}
-                  style={button.style}
-                  size={button.size}
-                  icon={button.icon}
-                />
-              ))
+              buttons.map((button) => {
+                const allowedStyles = [
+                  'primary',
+                  'secondary',
+                  'neutral',
+                  'info',
+                  'success',
+                  'warning',
+                  'error'
+                ];
+                const safeStyle = allowedStyles.includes(button.style)
+                  ? button.style
+                  : 'primary';
+                return (
+                  <Button
+                    client:load
+                    link={button.link}
+                    label={button.label}
+                    style={safeStyle as 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'}
+                    type={['ghost', 'link', 'outline', 'disabled', ''].includes(button.type) ? button.type as 'ghost' | 'link' | 'outline' | 'disabled' | '' : ''}
+                    size={['', 'default', 'large', 'small', 'tiny', 'wide'].includes(button.size) ? button.size as '' | 'default' | 'large' | 'small' | 'tiny' | 'wide' : ''}
+                    icon={button.icon}
+                  />
+                );
+              })
             }
       </div>
     </div>
