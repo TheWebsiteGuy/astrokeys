@@ -9,6 +9,8 @@ const posts = defineCollection({
       title: z.string(),
       featuredImage: image().optional(),
       imageAlt: z.string().optional(),
+      excerpt: z.string().optional(),
+      publishedDate: z.date().optional(),
     }),
 })
 
@@ -49,4 +51,34 @@ const seo = defineCollection({
 })
 
 
-export const collections = { posts, branding, seo }
+const pages = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.(json)', base: './src/content/pages' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      hero: z.object({
+        heroImage: image(),
+        heroImageAlt: z.string(),
+        heading: z.string(),
+        subheading: z.string(),
+        intro: z.string(),
+        buttons: z.array(
+          z.object({
+            label: z.string(),
+            link: z.string(),
+            style: z.string(),
+            type: z.string(),
+            size: z.string(),
+            icon: z.string().optional(),
+          })
+        ).optional(),
+      }),
+      posts: z.object({
+        heading: z.string(),
+        subheading: z.string(),
+      }).optional(),
+    }),
+})
+
+
+export const collections = { posts, branding, seo, pages }

@@ -1,11 +1,12 @@
 ---
 import Button from '@components/ui/Button.tsx'
 
-
-import pageData from '@content/pages/home.json'
+import { getEntry } from 'astro:content'
 import { Image } from 'astro:assets'
-const buttons = pageData?.hero?.buttons || []
 
+const home = await getEntry('pages', 'home')
+const pageData = home?.data
+const buttons = pageData?.hero?.buttons || []
 ---
 
 <div class="bg-base-200">
@@ -13,37 +14,35 @@ const buttons = pageData?.hero?.buttons || []
     <div class="hero-content max-w-screen-2xl md:py-20">
       <div class="flex flex-col-reverse md:flex-row">
         <div class="flex flex-col items-start gap-6">
-          <h1 class="font-anton max-w-3xl text-6xl">{pageData?.hero.heading}</h1>
-          <h2 class="text-4xl font-semibold">{pageData?.hero.subheading}</h2>
+          <h1 class="font-anton max-w-3xl text-6xl">{pageData?.hero?.heading}</h1>
+          <h2 class="text-4xl font-semibold">{pageData?.hero?.subheading}</h2>
           <p class="py-3">
-            {pageData?.hero.intro}
+            {pageData?.hero?.intro}
           </p>
           <div class="flex flex-col items-center justify-center gap-4 lg:flex-row">
             {
               buttons.map((button) => {
-                const allowedStyles = [
-                  'primary',
-                  'secondary',
-                  'neutral',
-                  'info',
-                  'success',
-                  'warning',
-                  'error'
-                ];
-                const safeStyle = allowedStyles.includes(button.style)
-                  ? button.style
-                  : 'primary';
+                const allowedStyles = ['primary', 'secondary', 'neutral', 'info', 'success', 'warning', 'error']
+                const safeStyle = allowedStyles.includes(button.style) ? button.style : 'primary'
                 return (
                   <Button
                     client:load
                     link={button.link}
                     label={button.label}
                     style={safeStyle as 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'}
-                    type={['ghost', 'link', 'outline', 'disabled', ''].includes(button.type) ? button.type as 'ghost' | 'link' | 'outline' | 'disabled' | '' : ''}
-                    size={['', 'default', 'large', 'small', 'tiny', 'wide'].includes(button.size) ? button.size as '' | 'default' | 'large' | 'small' | 'tiny' | 'wide' : ''}
+                    type={
+                      ['ghost', 'link', 'outline', 'disabled', ''].includes(button.type)
+                        ? (button.type as 'ghost' | 'link' | 'outline' | 'disabled' | '')
+                        : ''
+                    }
+                    size={
+                      ['', 'default', 'large', 'small', 'tiny', 'wide'].includes(button.size)
+                        ? (button.size as '' | 'default' | 'large' | 'small' | 'tiny' | 'wide')
+                        : ''
+                    }
                     icon={button.icon}
                   />
-                );
+                )
               })
             }
           </div>
@@ -51,7 +50,7 @@ const buttons = pageData?.hero?.buttons || []
 
         <div class="w-1/2">
           {
-            Image && (
+            pageData?.hero?.heroImage && (
               <Image
                 src={pageData.hero.heroImage}
                 alt={pageData?.hero?.heroImageAlt || 'Hero Image'}
@@ -59,7 +58,6 @@ const buttons = pageData?.hero?.buttons || []
                 loading="lazy"
                 width={500}
                 height={500}
-                placeholder="blurred"
               />
             )
           }
