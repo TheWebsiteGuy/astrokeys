@@ -10,9 +10,9 @@
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.7",
+    "astro": "^5.16.10",
     "daisyui": "^5.5.14",
     "postcss": "^8.5.6",
     "react": "^19.2.3",
@@ -27,7 +27,7 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.0",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14"
   }
