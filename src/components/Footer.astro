@@ -1,5 +1,6 @@
 ---
 import footerSettings from '@settings/footer.json';
+import { marked } from 'marked';
 
 interface MenuItem {
   text: string;
@@ -15,6 +16,8 @@ interface SocialIcon {
 const menuItems: MenuItem[] = footerSettings?.menuItems || [];
 const copyright: string = footerSettings?.copyright || '';
 const socialIcons: SocialIcon[] = footerSettings?.socialIcons || [];
+
+const parsedCopyright = await marked(copyright);
 ---
 
 <footer class="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
@@ -32,7 +35,7 @@ const socialIcons: SocialIcon[] = footerSettings?.socialIcons || [];
       ))}
     </div>
   </nav>
-  <aside>
-    <p>{copyright}</p>
+  <aside class="prose max-w-none">
+    <p set:html={parsedCopyright}></p>
   </aside>
 </footer>

@@ -15,9 +15,8 @@ export const footer = singleton({
         itemLabel: (props) => props.fields.text.value || 'Menu Item',
       },
     ),
-    copyright: fields.text({ 
+    copyright: fields.markdoc.inline({ 
       label: 'Copyright Text',
-      defaultValue: '© 2025 TheWebsiteGuy. All rights reserved.'
     }),
     socialIcons: fields.array(
       fields.object({
